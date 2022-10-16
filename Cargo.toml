@@ -8,3 +8,4 @@ edition = "2021"
 [dependencies]
 rand = "0.8.4"
 time = "0.3.15"
+rand_chacha = "0.3.1"
