@@ -1,5 +1,5 @@
 [package]
-name = "stupid-numbers"
+name = "stupid-die-roller"
 version = "0.1.0"
 edition = "2021"
 
