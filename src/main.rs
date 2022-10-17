@@ -11,19 +11,19 @@ fn actual_run()
 	let rgoal:i8 = GOAL+1;
 	let mut total_highest:i8 = 0;
 	let mut instance_highest:i8 = 0;
-	let mut iters:u128 = 0;
+	let mut rolls:u128 = 0;
 	let start:Instant = Instant::now();
 
 	while instance_highest != GOAL
   {
-		iters += 1;
+		rolls += 1;
 		if rng.gen_range(1..rgoal) == instance_highest+1
     {
 			instance_highest += 1;
 			if instance_highest > total_highest
       {
 				total_highest = instance_highest;
-				println!("{}/{} in {} seconds and {} iters | {} it/s",total_highest,GOAL,start.elapsed().as_seconds_f32(),iters,iters as f64/start.elapsed().as_seconds_f64());
+				println!("{}/{} in {} seconds and {} rolls | {} rolls/s",total_highest,GOAL,start.elapsed().as_seconds_f32(),rolls,rolls as f64/start.elapsed().as_seconds_f64());
 			}
 		} else {instance_highest = 0;}
 	}
@@ -35,12 +35,12 @@ fn benchmark(acc:i8)
 	let rgoal:i8 = GOAL+1;
 	let mut total_highest:i8 = 0;
 	let mut instance_highest:i8 = 0;
-	let mut iters:u128 = 0;
+	let mut rolls:u128 = 0;
 	let start:Instant = Instant::now();
 
 	while instance_highest != GOAL
   {
-		iters += 1;
+		rolls += 1;
 		if rng.gen_range(1..rgoal) == instance_highest+1
     {
 			instance_highest += 1;
@@ -50,7 +50,7 @@ fn benchmark(acc:i8)
         print!("");
         if total_highest == acc
         {
-          println!("benchmark complete: {} iters/s",iters as f64/start.elapsed().as_seconds_f64());
+          println!("benchmark complete: {} rolls/s",rolls as f64/start.elapsed().as_seconds_f64());
           exit(0);
         }
 			}
