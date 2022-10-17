@@ -1,3 +1,4 @@
+all benchmarks are intended for a d20
 # arguments
 |arg|description|
 |--|--|
