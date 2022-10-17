@@ -1,7 +1,7 @@
+use std::env;
 use time::Instant;
 use rand::prelude::*;
 use rand_chacha::ChaCha8Rng;
-use std::{env,process::exit};
 use std::io::{self,Write,stdin};
 
 fn actual_run(goal:i8)
@@ -37,7 +37,7 @@ fn benchmark(goal:i8,acc:i8)
 	let mut rolls:u128 = 0;
 	let start:Instant = Instant::now();
 
-	while instance_highest != goal
+	while instance_highest != acc
   {
 		rolls += 1;
 		if rng.gen_range(1..rgoal) == instance_highest+1
@@ -46,15 +46,11 @@ fn benchmark(goal:i8,acc:i8)
 			if instance_highest > total_highest
       {
 				total_highest = instance_highest;
-        print!("");
-        if total_highest == acc
-        {
-          println!("benchmark complete: {} rolls/s",rolls as f64/start.elapsed().as_seconds_f64());
-          exit(0);
-        }
+				println!("{}/{} in {} seconds and {} rolls | {} rolls/s",total_highest,goal,start.elapsed().as_seconds_f32(),rolls,rolls as f64/start.elapsed().as_seconds_f64());
 			}
 		} else {instance_highest = 0;}
 	}
+	println!("benchmark complete: {} rolls/s",rolls as f64/start.elapsed().as_seconds_f64());
 }
 
 fn main()
