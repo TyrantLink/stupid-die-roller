@@ -21,7 +21,7 @@ def benchmark(high_acc:bool):
 
 def main():
 	high_acc = input('run high accuracy benchmark? [y/N] ').lower() in ['y','yes','true']
-	loops = int(input('how many times would you like to run the benchmark? [5]') or 5)
+	loops = int(input('how many times would you like to run the benchmark? [5] ') or 5)
 	benchmarks = [benchmark(high_acc) for i in range(loops)]
 	print(f'{"[HIGH-ACC] " if high_acc else ""}average of {loops} benchmarks: {"{:,}".format(round(sum(benchmarks)/loops,2))} rolls/s')
 	
